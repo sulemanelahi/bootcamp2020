@@ -26,10 +26,10 @@ jobs:
         with:
           node-version: 14
           
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: Borales/actions-yarn@v2.3.0
         with:
           cmd: install # will run `yarn install` command
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: Borales/actions-yarn@v2.3.0
         with:
           cmd: build # will run `yarn build` command
           
@@ -37,7 +37,7 @@ jobs:
         run: npm install -g surge
         
       - name: Bundles the app into static files for production
-        run: yarn build
+        run: sudo yarn build
         
       - name: Deployment to Surge 
         run: surge ./build devday1.surge.sh --token ${{ secrets.TOKEN }}
