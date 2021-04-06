@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+let WebLights = ({dark, light}) => {
+  
+  let [defaultMode, setMode] = useState(true);
+
+
+  return(
+    <div>
+      <h4>Page is In {defaultMode ? "Light" : "Dark"} Mode</h4>
+      <br/>
+      <button onClick={()=> setMode(!defaultMode)}>Change Mode</button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default WebLights;
