@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+
+jobs:
+	build:
+		runs-on: ubuntu-latest
+		
+		steps:
+		
+			uses: actions/checkout@v2
+			
+			name: Node.JS Installation
+			uses: actions/setup-node@v2-beta
+			with:
+				node-version: 14
+				
+                        
+			name: for making static page (build)
+			run: npm run build
+      
+			name: Surge Installation
+			run: npm install -g surge
+
+                        name: Deployment
+			run: surge ./build devday3.surge.sh --token ${{ secrets.surgeToken }}
