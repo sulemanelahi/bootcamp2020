@@ -34,7 +34,7 @@ jobs:
         uses: Borales/actions-yarn@v2.3.0
         with:
           # Yarn command
-          cmd: install
+          cmd: cd class2 && install
 
       # Creating build
       - name: Creating build
