@@ -38,7 +38,7 @@ jobs:
 
       # Creating build
       - name: Creating build
-        run: yarn build
+        run: cd class2 && yarn build
 
       # Surge Installation
       - name: Surge Installation
