@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Class2
+name: CI
 
 # Controls when the workflow will run
 on:
@@ -21,28 +21,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs github actions for nodejs
+      # Runs a single command using the runners shell
       - name: Node.js installation
         uses: actions/setup-node@v3.1.1
         with:
           node-version: "14"
 
-      # Runs github actions for yarn
-      - name: GitHub Action for Yarn
-        # You may pin to the exact commit or the version.
-        # uses: Borales/actions-yarn@4965e1a0f0ae9c422a9a5748ebd1fb5e097d22b9
-        uses: Borales/actions-yarn@v2.3.0
-        with:
-          # Yarn command
-          cmd: install
-
-      # Creating build
-      - name: Creating build
-        run: yarn build
-
-      # Surge Installation
+      # Runs a set of commands using the runners shell
       - name: Surge Installation
-        run: yarn add global surge
+        run: npm install -g surge
 
       - name: Deployment to surge
-        run: surge ./class2/build http://class2ofgeeks.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+        run: surge ./class1 http://class1ofgeeks.surge.sh --token ${{ secrets.SURGE_TOKEN }}
