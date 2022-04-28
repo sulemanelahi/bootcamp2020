@@ -28,18 +28,17 @@ jobs:
           node-version: "14"
 
       # Runs github actions for yarn
-      - name: GitHub Action for Yarn
-        # You may pin to the exact commit or the version.
-        # uses: Borales/actions-yarn@4965e1a0f0ae9c422a9a5748ebd1fb5e097d22b9
+      - name: GitHub Action for Yarn Install
         uses: Borales/actions-yarn@v2.3.0
-        run: cd class2
         with:
           # Yarn command
-          cmd: install
+          cmd: cd class2 && install
 
-      # Creating build
-      - name: Creating build
-        run: cd class2 && yarn build
+      - name: GitHub Action for Yarn Build
+        uses: Borales/actions-yarn@v2.3.0
+        with:
+          # Yarn command
+          cmd: cd class2 && build
 
       # Surge Installation
       - name: Surge Installation
