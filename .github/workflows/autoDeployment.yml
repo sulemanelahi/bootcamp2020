@@ -26,4 +26,4 @@ jobs:
         run: yarn global add surge
 
       - name: Deployment to Surge 
-        run: surge ./build devday1.surge.sh --token ${{ secrets.TOKEN }}
+        run: surge ./build --domain devday1.surge.sh --token ${{ secrets.SURGE_TOKEN }}
