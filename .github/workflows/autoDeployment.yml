@@ -22,5 +22,8 @@ jobs:
         with:
           cmd: build # will run `yarn build` command
 
+      - name: Surge Installation
+        run: yarn global add surge
+
       - name: Deployment to Surge 
         run: surge ./build devday1.surge.sh --token ${{ secrets.TOKEN }}
