@@ -1,0 +1,29 @@
+name: Hello useState
+on:
+  push:
+    branches: [ day-3 ]
+
+jobs:
+  build:
+    name: "hello-useState"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Node.js Installation 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - uses: Borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
+      - uses: Borales/actions-yarn@v4
+        with:
+          cmd: build # will run `yarn build` command
+
+      - name: Surge Installation
+        run: yarn global add surge
+
+      - name: Deployment to Surge 
+        run: surge ./build --domain devday3.surge.sh --token ${{ secrets.SURGE_TOKEN }}
